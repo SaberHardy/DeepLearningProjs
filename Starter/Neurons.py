@@ -12,11 +12,21 @@ print(concrete.head)
 target = [8]
 
 # Define the model with hidden layers
-model = keras.Sequential([
-    layers.Dense(units=512, activation="relu", input_shape=target),
-    layers.Dense(units=512, activation="relu"),
-    layers.Dense(units=512, activation="relu"),
-    layers.Dense(1)  # This one is the output of the neurons
-])
+# model = keras.Sequential([
+#     layers.Dense(units=512, activation="relu", input_shape=target),
+#     layers.Dense(units=512, activation="relu"),
+#     layers.Dense(units=512, activation="relu"),
+#     layers.Dense(1)  # This one is the output of the neurons
+# ])
 
-print(model)
+"""
+Or using this method also is better
+"""
+model = keras.Sequential([
+    layers.Dense(32, input_shape=target),
+    layers.Activation('relu'),
+    layers.Dense(32),
+    layers.Activation('relu'),
+    layers.Dense(1),
+])
+print(model.score)
