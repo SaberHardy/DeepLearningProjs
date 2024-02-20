@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-# from tensorflow import keras
+from tensorflow import keras
 from tensorflow.keras import layers
 
 red_wine = pd.read_csv('../datasets/winequality-red.csv')
@@ -17,5 +17,15 @@ y_train = df_train['quality']
 y_valid = df_valid['quality']
 
 print(df_train)
-
-
+model = keras.Sequential([
+    layers.Dense(1024, activation='relu', input_shape=[11]),
+    layers.Dropout(0.3),
+    layers.BatchNormalization(),
+    layers.Dense(1024, activation='relu'),
+    layers.Dropout(0.3),
+    layers.BatchNormalization(),
+    layers.Dense(1024, activation='relu'),
+    layers.Dropout(0.3),
+    layers.BatchNormalization(),
+    layers.Dense(1),
+])
